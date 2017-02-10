@@ -11,11 +11,14 @@
 // [1,3,5,6], 7 → 4
 // [1,3,5,6], 0 → 0
 
-var searchInsert = function(nums, target) {
-    for(var x = 0; x<nums.length; x++){
-        if(target <= nums[x]){
+
+var searchInsert = function(arr, num){
+    for(var x = 0; x<arr.length; x++){
+        if(arr[x] >= num){
             return x
         }
     }
-    return nums.length;
-};
+    return arr.indexOf(num)
+}
+
+console.log(searchInsert([1,3,5,6], 0))
