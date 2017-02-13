@@ -33,3 +33,11 @@ var maxProfit = function(prices) {
 // Design an algorithm to find the maximum profit.
 // You may complete as many transactions as you like (ie, buy one and sell one share of the stock multiple times).
 // However, you may not engage in multiple transactions at the same time (ie, you must sell the stock before you buy again).
+
+var maxProfit = function(prices) {
+    var profit = 0;
+    for(var idx = 1; idx<prices.length; idx++){
+        profit += Math.max(0, prices[idx]-prices[idx-1])
+    }
+    return (prices.length <= 1 ) ? 0 : profit
+};
