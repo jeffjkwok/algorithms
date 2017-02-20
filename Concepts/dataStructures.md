@@ -16,5 +16,5 @@ A linked list does not provided constant access or instant look up to a specific
 
 A benefit for linked list is that you can remove things from the front in O(1) time.
 
-For Singly Linked Lists: https://github.com/jeffjkwok/algorithms/blob/master/Concepts/linkedLists.js
-For Doubly Linked Lists:
+For Singly Linked Lists: https://github.com/jeffjkwok/algorithms/blob/master/Concepts/singlyLinkedLists.js
+For Doubly Linked Lists: 
