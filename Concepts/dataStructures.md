@@ -1,4 +1,5 @@
 # Data Structures
+<sub>Notes for data structures from Cracking the Coding Interview and other resources.</sub>
 
 ### Hash Table
 
