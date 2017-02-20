@@ -15,3 +15,5 @@ This is a data structure that represents a sequence of nodes. In a singly linked
 A linked list does not provided constant access or instant look up to a specific index for that list. In order to find a N<sup>th</sup> element you will iterate through N elements.
 
 A benefit for linked list is that you can remove things from the front in O(1) time.
+
+For Singly Linked List: https://github.com/jeffjkwok/algorithms/blob/master/Concepts/linkedLists.js

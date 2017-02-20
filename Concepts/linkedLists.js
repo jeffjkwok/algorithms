@@ -1,7 +1,4 @@
-// Need to know how to init/create a linked list
-// push, pop, shift, unshift, insert(postion/node)
-
-// Page 59 SLL
+// Singly Linked List
 function SinglyLinked(){
 	this.head = null;
 	this._length=0;
@@ -102,5 +99,3 @@ console.log(list)
 console.log('*******************')
 list.pop(7)
 console.log(list)
-
-
