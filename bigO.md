@@ -13,11 +13,14 @@ function sum(n){
   return n + sum(n-1)
 }
 ```
+
 This recursive function above will take O(N) time and O(N) space. However just because it has N calls it doesn't mean that it will take N space.
 
 ###Common Rules and Basic Knowledge
 
 Drop constants and non-dominant terms.
+* O(2N) -> O(N)
+* O(N<sup>2</sup> + P) where P < N/2 -> O(N<sup>2</sup>)
 
 You multiply runtimes when they are typically nested: O(N<sup>2</sup>)
 
@@ -50,8 +53,12 @@ Inserting an element in an array, that might be full, that contains N elements w
 But since this happens not as often and the majority of the time insertions into an array is constant, O(1), therefore the time for insertion is still O(1). Since the doubling of an array happens so often the cost/runtime is "amortized".
 
 
-###Recursive Pattern
+###Recursive Runtimes
+
+**Recursive Pattern**
 
 When calculating an algorithm which is a recursive function that makes multiple calls, the runtime may often be O(branches<sup>depth</sup>)
 
 ### Log N Runtimes
+
+When the number of elements in the problem gets halved each time it will likely have a O(log N) runtime, such as in a BST.
