@@ -11,12 +11,12 @@ A hashtable maps keys to values for highly efficient look up. One way to approac
 This is a data structure that represents a sequence of nodes. In a singly linked list, each node points to the next node in the list. For a doubly linked list, it provides each node a pointer to the next node and the previous node.
 
 #### Something to Note
-
 A linked list does not provided constant access or instant look up to a specific index for that list. In order to find a N<sup>th</sup> element you will iterate through N elements.
 
 A benefit for linked list is that you can remove things from the front in O(1) time.
 
 **Implementation of Singly Linked Lists:** https://github.com/jeffjkwok/algorithms/blob/master/Concepts/singlyLinkedLists.js
+
 **Implementation of Doubly Linked Lists:**
 
 ### Stacks and Queues
@@ -77,4 +77,12 @@ The most common types of balanced trees are red-black trees and AVL trees.
 
 **Full Binary Trees:** A full binary tree is a tree where every node that has either zero or two children.
 
-**Perfect Binary Tree:** Is a tree that is both full and complete. 
+**Perfect Binary Tree:** Is a tree that is both full and complete.
+
+#### Binary Tree Traversal
+
+You should know and be comfortable with implementing in-order, post-order, and pre-order traversal. The most common being the in-order traversal.
+
+**In-Order Traversal:** This method of traversal means your go through the left, the current, then the right node.
+**Pre-Order Traversal:** This method visits the current before its children.
+**Post-Order Traversal:** The last traversal visits the current node last and its children first.

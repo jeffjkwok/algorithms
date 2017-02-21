@@ -1,6 +1,4 @@
-// Need to know how to create a bst
-// find, add, height
-
+// Implementation of a binary search tree
 function BST(){
 	this.root = null;
 }
@@ -11,24 +9,23 @@ function BTNode(value){
 	this.right = null;
 }
 
+// Counts the number of nodes returns 0 + 1 at the branch that has no leaf then sums it up al the way up to the root.
 BST.prototype.count = function(node){
 	if(!node){
 		return 0;
-	} 
-	// else if (!node.left && !node.right){
-	// 	return 1;
-	// } 
+	}
 	else {
-		return this.count(node.left) + this.count(node.right)+1
+		return this.count(node.left) + this.count(node.right) + 1
 	}
 }
 
-function height(node){
-   if(!node){ 
+// Measures the height of the tree so you call the 
+BST.prototype.height = function(node){
+   if(!node){
    	   return 0;
    }
-   var leftHeight = height(node.left);
-   var rightHeight = height(node.right);
+   var leftHeight = this.height(node.left);
+   var rightHeight = this.height(node.right);
 
    return Math.max(leftHeight, rightHeight) + 1;
 }
@@ -47,7 +44,7 @@ BST.prototype.add = function(value){
 				} else {
 					current = current.left;
 				}
-			} 
+			}
 			if ( value >= current.val){
 				if(!current.right){
 					current.right = node;
@@ -86,6 +83,6 @@ tree.add(10)
 
 // tree.height(tree.root)
 console.log(tree)
-console.log(height(tree.root), 'height')
+console.log(tree.height(tree.root), 'height')
 console.log(tree.count(tree.root), 'count')
 console.log(tree.find(10))
