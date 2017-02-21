@@ -99,3 +99,23 @@ When inserting into a min-heal you always start by adding it to the bottom most 
 *Extract Min*
 
 Finding the min of a min-heap is easy: its always at the top. The hard part is removing it. The strategy typically goes that we remove the minimum element and swap it with the last element in the tree. After bubble down and swap it with its children until the heap is fixed. **Runtime: O(log n)**
+
+### Tries (Prefix Trees)
+
+A trie is a strange data structure. This structure is a variant of an n-ary tree where the characters are stored at each node and each path down the tree my represent a word. Uses characters like * to represent a word is complete.
+
+Very commonly, a trie is used to store the entire english language for quick prefix lookups. While a hash table can quickly look up a string is a valid word, it cant tell us if a prefix of any word but a trie can quickly. There are many problems that involve valid words use tries as a method of optimization since.
+
+### Graphs
+
+A tree is actually a type of graph, but not all graphs are tress. A tree is basically a connected graph without cycles. A graph is simply a collection of nodes with edges between (some of) them.
+
+* A graph can either be directed or undirected. Those with directed edges can only go one way while undirected edges are two way.
+
+* Graphs may also contain multiple isolated subgraphs.
+
+* The graph may also have cycles or not. **Acyclic Graph** is one with out cycles
+
+#### Adjacency List
+
+The most common way to represent a graph is using these adjacency list. Every vertex stores a list of adjacent vertices
