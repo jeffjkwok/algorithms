@@ -1,17 +1,16 @@
 # Data Structures
 <sub>Notes for data structures from Cracking the Coding Interview and other resources.</sub>
 
-### Hash Table
+## Hash Table
 
 A hashtable maps keys to values for highly efficient look up. One way to approach this is to compute the hash code for a key. Then map the code to an index within an array and insert it to the data structure there.
 
 
-### Linked Lists
+## Linked Lists
 
 This is a data structure that represents a sequence of nodes. In a singly linked list, each node points to the next node in the list. For a doubly linked list, it provides each node a pointer to the next node and the previous node.
 
-#### Something to Note
-A linked list does not provided constant access or instant look up to a specific index for that list. In order to find a N<sup>th</sup> element you will iterate through N elements.
+**Something to Note** A linked list does not provided constant access or instant look up to a specific index for that list. In order to find a N<sup>th</sup> element you will iterate through N elements.
 
 A benefit for linked list is that you can remove things from the front in O(1) time.
 
@@ -19,7 +18,7 @@ A benefit for linked list is that you can remove things from the front in O(1) t
 
 **Implementation of Doubly Linked Lists:**
 
-### Stacks and Queues
+## Stacks and Queues
 
 #### Implementing a Stack
 
@@ -49,7 +48,7 @@ Other things to note, queues are often used in breadth-first search or in implem
 
 **Implementation of Queues:**
 
-### Trees and Graphs
+## Trees and Graphs
 
 For trees the worst case and average case runtime may vary wildly. Something else to note, a tree is actually a type of graph.
 
@@ -86,3 +85,15 @@ You should know and be comfortable with implementing in-order, post-order, and p
 **In-Order Traversal:** This method of traversal means your go through the left, the current, then the right node.
 **Pre-Order Traversal:** This method visits the current before its children.
 **Post-Order Traversal:** The last traversal visits the current node last and its children first.
+
+### Binary Heaps (Min & Max Heaps)
+
+Max heaps are in descending order. A min-heap is a complete binary tree where each node is smaller than its children. Therefore the minimum element of the tree is the root node. There will be two key operations in a min-heap: **insert** and **extract_min**
+
+*insert*
+
+When inserting into a min-heal you always start by adding it to the bottom most right. After, you fix the tree by swapping the new element with the parent until the appropriate spot is found. *Runtime: O(log n)*
+
+*Extract Min*
+
+Finding the min of a min-heap is easy: its always at the top. The hard part is removing it. The strategy typically goes that we remove the minimum element and swap it with the last element in the tree. After bubble down and swap it with its children until the heap is fixed. *Runtime: O(log n)*
