@@ -45,14 +45,17 @@ SinglyLinked.prototype.addFront = function(value){
 	}
 }
 
-// SHIFT FUNCTION
+// Remove from front also known as shift.
+// Holds the next node after head and nulls the head
 SinglyLinked.prototype.removeFront = function(){
 	var temp = this.head.next;
 	this.head.next = null;
 	this.head = temp;
 	this._length--;
 }
-// UNSHIFT FUNCTION
+
+// Unshift function
+// This function adds a node to the front of the list and connects it to the rest of the list
 SinglyLinked.prototype.unshift = function(){
 	var node = new Node(null)
 	var temp = this.head;
@@ -61,6 +64,7 @@ SinglyLinked.prototype.unshift = function(){
 	this._length++;
 }
 
+// Iterates through the list and checks if the value is contained within a node in the list
 SinglyLinked.prototype.contains = function(value){
 	var current = this.head;
 	while( current != null){
@@ -71,15 +75,19 @@ SinglyLinked.prototype.contains = function(value){
 			current = current.next;
 		}
 	}
-	console.log(false)
 	return false
 }
 
+// Returns the value of the head
 SinglyLinked.prototype.front = function(){
 	var front = this.head.val;
 	return front
 }
-// POP FUNCTION
+
+// Pop the value from the list
+// First test the if the value is at the head
+// Then if its not the head it checks for the value in the node after current if its there hold current.next.next in a temp
+// After sever the connections and reconnect the current to the temp
 SinglyLinked.prototype.pop = function(value){
 	if( this.head.val == value ){
 		var temp = this.head.next;
@@ -93,7 +101,7 @@ SinglyLinked.prototype.pop = function(value){
 		if(current.next.val == value){
 			var temp = current.next.next;
 			current.next.next = null;
-			current.next= temp;
+			current.next = temp;
 			this._length--;
 			return this
 		} else {
