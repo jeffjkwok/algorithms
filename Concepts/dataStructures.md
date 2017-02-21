@@ -83,17 +83,19 @@ The most common types of balanced trees are red-black trees and AVL trees.
 You should know and be comfortable with implementing in-order, post-order, and pre-order traversal. The most common being the in-order traversal.
 
 **In-Order Traversal:** This method of traversal means your go through the left, the current, then the right node.
+
 **Pre-Order Traversal:** This method visits the current before its children.
+
 **Post-Order Traversal:** The last traversal visits the current node last and its children first.
 
 ### Binary Heaps (Min & Max Heaps)
 
 Max heaps are in descending order. A min-heap is a complete binary tree where each node is smaller than its children. Therefore the minimum element of the tree is the root node. There will be two key operations in a min-heap: **insert** and **extract_min**
 
-*insert*
+*Insert*
 
-When inserting into a min-heal you always start by adding it to the bottom most right. After, you fix the tree by swapping the new element with the parent until the appropriate spot is found. *Runtime: O(log n)*
+When inserting into a min-heal you always start by adding it to the bottom most right. After, you fix the tree by swapping the new element with the parent until the appropriate spot is found. **Runtime: O(log n)**
 
 *Extract Min*
 
-Finding the min of a min-heap is easy: its always at the top. The hard part is removing it. The strategy typically goes that we remove the minimum element and swap it with the last element in the tree. After bubble down and swap it with its children until the heap is fixed. *Runtime: O(log n)*
+Finding the min of a min-heap is easy: its always at the top. The hard part is removing it. The strategy typically goes that we remove the minimum element and swap it with the last element in the tree. After bubble down and swap it with its children until the heap is fixed. **Runtime: O(log n)**
