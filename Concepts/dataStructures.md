@@ -30,3 +30,12 @@ There are 4 operations for a stack:
 * push(item): adds an item to the end
 * peek(): returns the item in the back of the stack
 * isEmpty(): checks if it is empty
+
+
+### Binary Tree
+
+#### Basics
+
+A every node in binary tree will have have at most two children. For a Binary Search Tree, this is when the values in the left subtree are smaller than the node with value and the right are greater than.
+
+When a node has no children it has no children, while an internal node is one that is not a leaf node. For height, the height of a node is the longest path from a node to a leaf node while the height of a tree if from the height of the root node.
