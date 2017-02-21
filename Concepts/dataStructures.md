@@ -66,7 +66,7 @@ A binary search tree (BST) is a binary tree where every left node descendent is 
 
 Not all Binary Search Trees will allow duplicates ask interviewer to clarify. Also, clarify which tree your interviewer wants you to demonstrate because it may not be a BST.
 
-#### Balanced vs Unbalanced
+### Balanced vs Unbalanced
 
 While many trees are balanced, not all are. Balancing a tree doesn't mean that left and right subtrees are the same size. One way to think about it is that a balanced tree means *'not terribly Unbalanced'* just balanced enough to ensure O(log n) for insert and find.
 
@@ -78,7 +78,7 @@ The most common types of balanced trees are red-black trees and AVL trees.
 
 **Perfect Binary Tree:** Is a tree that is both full and complete.
 
-#### Binary Tree Traversal
+### Binary Tree Traversal
 
 You should know and be comfortable with implementing in-order, post-order, and pre-order traversal. The most common being the in-order traversal.
 
