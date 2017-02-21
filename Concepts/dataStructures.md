@@ -18,3 +18,15 @@ A benefit for linked list is that you can remove things from the front in O(1) t
 
 **For Singly Linked Lists:** https://github.com/jeffjkwok/algorithms/blob/master/Concepts/singlyLinkedLists.js
 **For Doubly Linked Lists:**
+
+### Stacks and Queues
+
+#### Implementing a Stack
+
+A stack uses a last-in first out approach LIFO. That is when stacking dinner plates, the most recent item added is often the first to be removed. Stacks are unlike arrays where they don't offer instant access to specific indices but it does have instant adds and removes since it doesn't shift elements.
+
+There are 4 operations for a stack:
+* pop(): removes the function from the end
+* push(item): adds an item to the end
+* peek(): returns the item in the back of the stack
+* isEmpty(): checks if it is empty
