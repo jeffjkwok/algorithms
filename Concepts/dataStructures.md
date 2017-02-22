@@ -137,3 +137,20 @@ For **depth-first search**, you start at the rote and explore each branch all th
 #### Breadth-first Search BFS
 
 For **breadth-first search**, you also start at the root and explore each neighbor before going through the children. If you're looking for shortest path you tend use breadth-first.
+
+#### Bidirectional Search
+
+This search is typically used to find the shortest path between a source and destination. It works by basically using two BFS searches. When they collide that is typically when you have found a path.
+
+## Bit Manipulation
+
+This concept is used in a variety of problems. Sometimes problems can require bit manipulation, other times its a useful technique to optimize your code.
+
+**Note** If you XOR (^) a number with its negated (~) number you get a sequence of 1s.
+
+### Bit Facts and Tricks
+
+|:-----------:|:----------:|:-----------:|
+| x ^ 0s = x  | x & 0s = 1 | x | 0s = x  |
+| x ^ 1s = ~x | x & 1s = x | x | 1s = 1s |
+| x ^ x = 0   | x & x = x  | x | x = x   |
