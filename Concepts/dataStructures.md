@@ -174,9 +174,13 @@ For **logical right shifts** (>>>), the bits are shifted and 0 is put in the mos
 ```javascript
 
 // Logical Right Shift
-[1,0,1,1,0,1,0,1] = -75 => [0,1,0,1,1,0,1,0] = 90
+[1,0,1,1,0,1,0,1] = -75
+// becomes
+[0,1,0,1,1,0,1,0] = 90
 
 // Arithmetic Right Shift
-[1,0,1,1,0,1,0,1] =-75 => [1,1,0,1,1,0,1,0] = -38
+[1,0,1,1,0,1,0,1] =-75
+// becomes
+[1,1,0,1,1,0,1,0] = -38
 
 ```
