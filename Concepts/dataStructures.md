@@ -171,6 +171,8 @@ There are two types of right shift operators. Arithmetic right shift essentially
 
 For **logical right shifts** (>>>), the bits are shifted and 0 is put in the most significant bit. In an **arithmetic right shift** (>>), the values are shifted to the right but fill in the new bits with the value of the sign bit. This has the effect of *roughly* dividing by two.
 
+Note: A sequence of all 1s in a signed integer/bit is -1
+
 ```javascript
 
 // Logical Right Shift
@@ -183,4 +185,64 @@ For **logical right shifts** (>>>), the bits are shifted and 0 is put in the mos
 // becomes
 [1,1,0,1,1,0,1,0] = -38
 
+```
+### Common Bit Tasks: Getting and Setting
+
+These operations are important to know and understand. It should be required to understand how to implement these methods to solve other bit problems
+
+#### Get Bit
+
+This method shifts 1 over by i bits. Then we perform an AND with num, to clear all bits other than the bit at bit i. We then after compare that to 0. If that new value is not zero then bit i must have a 1. Other wise bit i is 0. This method basically checks if there is a bit is on at that position; it returns a boolean.
+
+```javascript
+function getBit(num, i){
+    return ((num & (1 << i )) != 0)
+}
+```
+
+#### Set Bit
+
+This method shifts 1 over by i bits. Then performs an OR with num, changing the value of bit i. All the other bits of the mask are zero and will not affect num. This method basically changes a bit other than the ones active and returns the sum.
+
+```javascript
+function setBit(num,i){
+    return num | ( 1 << i )
+}
+```
+
+#### Clear Bit
+This method operates basically the opposite of setBit. We create a bit by with only one 1 and then negating it. We then perform an AND with the num. This should clear the ith bit and leave the remainder unchanged
+
+Then the clearBitsThroughI from the most significant bit through i (inclusive), create a mask with a 1 at the ith bit. Then we subtract 1 from it, giving us a sequence of 0s followed by i 1s. We then AND with the mask to leave the last i bits.
+
+For clearBitsThrough0 from i to 0 inclusively, take a sequence of all 1s (which is -1) and shift it left by i + 1 bits. Then it gives a sequence of 1s infthe most significant bits followed by i 0 bits.
+
+```javascript
+function clearBit(num, i){
+    var mask = ~(1 << i);
+    return num & mask
+}
+
+function clearBitsThroughI(num, i){
+    var mask = (1 << i) - 1;
+    return num & mask
+}
+
+function clearBitsThrough0(num, i){
+    var mask = (-1 << (i + 1));
+    return num & mask
+}
+```
+
+#### Update Bit
+
+To set the ith bit to a value v, we first clear the bit at position i by using a mask. Then shift the intended value, v, left by i bits. this will create a number with a bit i equal to v and all other bits = to 0. then we OR these two numbers, updating the ith bit if v is 1 and leaving it as 0 otherwise.
+
+
+```javascript
+function updateBit(num, i){
+    var value = bitsIsI ? 1 : 0;
+    var mask = ~(1 << i);
+    return ( num & mask ) | ( value << i )
+}
 ```
