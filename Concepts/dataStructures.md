@@ -149,8 +149,34 @@ This concept is used in a variety of problems. Sometimes problems can require bi
 **Note** If you XOR (^) a number with its negated (~) number you get a sequence of 1s.
 
 ### Bit Facts and Tricks
+
 |     XOR     |     AND    |     OR      |
 |:-----------:|:----------:|:-----------:|
 | x ^ 0s = x  | x & 0s = 1 | x l 0s = x  |
 | x ^ 1s = ~x | x & 1s = x | x l 1s = 1s |
 | x ^ x = 0   | x & x = x  | x l x = x   |
+
+### Two's Complement and Negative Numbers
+
+Negative numbers in binary often have a sign bit where if it is a 1 in that bit it becomes negative.
+Ex: With the sign being the first bit in the number. Where the sign bit becomes the negative value of that location.
+
+0 | 1 1 1 = 0 + 7 = 7
+
+1 | 1 1 1 => -8 + 7 = -1
+
+### Arithmetic vs Logical Right
+
+There are two types of right shift operators. Arithmetic right shift essentially divides by two while the logical right shift does what we would visually see as shifting bits which is best seen on a negative number
+
+For **logical right shifts** (>>>), the bits are shifted and 0 is put in the most significant bit. In an **arithmetic right shift** (>>), the values are shifted to the right but fill in the new bits with the value of the sign bit. This has the effect of *roughly* dividing by two.
+
+```javascript
+
+// Logical Right Shift
+[1,0,1,1,0,1,0,1] = -75 => [0,1,0,1,1,0,1,0] = 90
+
+// Arithmetic Right Shift
+[1,0,1,1,0,1,0,1] =-75 => [1,1,0,1,1,0,1,0] = -38
+
+```
