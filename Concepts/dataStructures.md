@@ -118,4 +118,22 @@ A tree is actually a type of graph, but not all graphs are tress. A tree is basi
 
 #### Adjacency List
 
-The most common way to represent a graph is using these adjacency list. Every vertex stores a list of adjacent vertices
+The most common way to represent a graph is using these adjacency list. Every vertex/node stores a list of adjacent vertices. In an undirected graph an edge like (a,b) would be stored twice: once in node a's adjacent vertice list and once in node b's list.
+
+#### Adjacency Matrices
+
+An Adjacency matrix is a N by N boolean matrix where N is the number of nodes and where true alue at matrix[i][j] indecates an edge from node i to node j.
+
+In an undirected graph, an adjacency matrix will be symmetric. In a directed graph it will not necessarily be symmetric. The same algorithms that are used on adjacency list can also be done on matrices but they might be less efficient.
+
+### Graph Search
+
+The most two common ways to search a graph are depth-first search and breadth-first search. when searching through graphs you much check if it has been visited or you would be stuck in a infinite loop.
+
+#### Depth-first Search DFS
+
+For **depth-first search**, you start at the rote and explore each branch all the way to the bottom before moving on to the next branch. This search is often preferred if you want to visit every node in the graph.
+
+#### Breadth-first Search BFS
+
+For **breadth-first search**, you also start at the root and explore each neighbor before going through the children. If you're looking for shortest path you tend use breadth-first.
