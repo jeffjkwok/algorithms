@@ -149,7 +149,7 @@ This concept is used in a variety of problems. Sometimes problems can require bi
 **Note** If you XOR (^) a number with its negated (~) number you get a sequence of 1s.
 
 ### Bit Facts and Tricks
-
+|     XOR     |     AND    |     OR      |
 |:-----------:|:----------:|:-----------:|
 | x ^ 0s = x  | x & 0s = 1 | x | 0s = x  |
 | x ^ 1s = ~x | x & 1s = x | x | 1s = 1s |
