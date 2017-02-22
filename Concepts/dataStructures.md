@@ -151,6 +151,6 @@ This concept is used in a variety of problems. Sometimes problems can require bi
 ### Bit Facts and Tricks
 |     XOR     |     AND    |     OR      |
 |:-----------:|:----------:|:-----------:|
-| x ^ 0s = x  | x & 0s = 1 | x | 0s = x  |
-| x ^ 1s = ~x | x & 1s = x | x | 1s = 1s |
-| x ^ x = 0   | x & x = x  | x | x = x   |
+| x ^ 0s = x  | x & 0s = 1 | x l 0s = x  |
+| x ^ 1s = ~x | x & 1s = x | x l 1s = 1s |
+| x ^ x = 0   | x & x = x  | x l x = x   |
