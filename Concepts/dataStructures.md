@@ -246,3 +246,18 @@ function updateBit(num, i){
     return ( num & mask ) | ( value << i )
 }
 ```
+
+## Math and Logic Puzzles
+
+### Prime Numbers
+
+As you probably know, every positive integer can be decomposed into a product of primes.
+
+#### Divisibility
+
+The prime number law stated means that in order for a number x to divided a number y, all primes in x's factorization must be in y's factorization:
+* Let x = 2<sup>j0</sup> * 3<sup>j1</sup> * 5<sup>j2</sup> * 7<sup>j3</sup>...
+
+* Let y = 2<sup>k0</sup> * 3<sup>k1</sup> * 5<sup>k2</sup> * 7<sup>k3</sup>...
+
+* if x/y, then for all i, ji <= ki
