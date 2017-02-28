@@ -111,11 +111,69 @@ SinglyLinked.prototype.pop = function(value){
 
 }
 
+SinglyLinked.prototype.removeDupe = function(){
+	if(!this.head){
+		return false
+	}
+	var mySet = new Set();
+	var current = this.head;
+	mySet.add(current.val);
+	while(current.next){
+		console.log(current.val)
+		if(mySet.has(current.next.val)){
+			var temp = current.next.next;
+			current.next.next = null;
+			current.next = temp;
+			this._length --;
+		} else {
+			mySet.add(current.next.val)
+			current = current.next
+		}
+	}
+}
+
+SinglyLinked.prototype.kToLast= function(k){
+	if(!list.head){
+		return false
+	}
+	var current = this.head;
+	var runner = this.head;
+	var count = -1;
+	while(runner.next){
+		count++;
+		runner=runner.next;
+		if(count>= k){
+			current = current.next
+		}
+	}
+	console.log(current)
+	return current
+}
+
+SinglyLinked.prototype.partition = function(val){
+	if(!this.head){
+		return false
+	}
+	var current = this.head;
+	while(current){
+		if(current.next.val < val){
+			var temp = current.next;
+			current.next = current.next.next
+			temp.next = this.head;
+			this.head = temp;
+		}
+		current = current.next
+	}
+}
+
 var list = new SinglyLinked();
 list.add(7)
+list.add(1)
+list.add(7)
+list.add(4)
+list.add(6)
 list.add(5)
-list.addFront(9)
-console.log(list)
-console.log('*******************')
-list.pop(7)
-console.log(list)
+// list.removeDupe()
+// list.kToLast(1)
+list.partition(6)
+console.log(list.head.next.next)
