@@ -7,13 +7,8 @@
 //
 
 var findDisappearedNumbers = function(nums) {
-    var mySet = new Set();
+    var mySet = new Set(nums);
     var arr = [];
-    for(var idx = 0; idx<nums.length; idx++){
-        if(!mySet.has(nums[idx])){
-            mySet.add(nums[idx]);
-        }
-    }
     for(var idx = 1; idx<= nums.length; idx++){
         if(!mySet.has(idx)){
             arr.push(idx);
@@ -21,3 +16,5 @@ var findDisappearedNumbers = function(nums) {
     }
     return arr
 };
+
+console.log(findDisappearedNumbers([1,2,3,4,5,5,7]))
