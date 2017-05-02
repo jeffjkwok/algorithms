@@ -1,7 +1,7 @@
 # Big O Notation
 <sub>Notes taken from Cracking the Coding Interview</sub>
 
-###Space Complexity
+### Space Complexity
 
 The amount of memory or space that is required by an algorithm. If one needs to create an array that contains N elements or of size N then it will require a space complexity of O(N). If it is a two dimensional array that is N x N then the space complexity will be O(N<sup>2</sup>).
 
@@ -43,7 +43,7 @@ for(var y = 0; y< n.length; y++){
 ```
 
 
-###Amortized Time
+### Amortized Time
 
 This typically happens when the dynamically resizing of an array occurs.
 
@@ -53,7 +53,7 @@ Inserting an element in an array, that might be full, that contains N elements w
 But since this happens not as often and the majority of the time insertions into an array is constant, O(1), therefore the time for insertion is still O(1). Since the doubling of an array happens so often the cost/runtime is "amortized".
 
 
-###Recursive Runtimes
+### Recursive Runtimes
 
 **Recursive Pattern**
 
