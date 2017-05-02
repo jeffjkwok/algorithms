@@ -16,7 +16,7 @@ function sum(n){
 
 This recursive function above will take O(N) time and O(N) space. However just because it has N calls it doesn't mean that it will take N space.
 
-###Common Rules and Basic Knowledge
+### Common Rules and Basic Knowledge
 
 Drop constants and non-dominant terms.
 * O(2N) -> O(N)
