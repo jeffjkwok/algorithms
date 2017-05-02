@@ -5,13 +5,31 @@
 
 A practical and classic data structure where data is stored. Pretty self explanatory, however I will list some built-in functions and different ways to do things.
 
-Luckily in JavaScript, can contain objects of different types.
+Luckily in JavaScript, can contain objects of different types. Below I will list a bunch of built-in functions that are useful and different from my normal approach.
 
-In JS, you can check if an object is an array by using the function: Array.isArray()
+```javascript
+// Checks if an object is an array
+Array.isArray();
 
-Creating Arrays
+// Creating Arrays
 var arr = [];
 var arr = new Array();
+
+//Creating a Array from a String
+String.split('');
+
+//Accessor Functions
+arr.indexOf(var);
+// this function returns the first index where it appears if it doesn't than it returns -1
+
+arr.lastIndexOf(var);
+// this is similar to the one above the returns the last index
+
+//Creating String Representations from Arrays
+arr.join();
+arr.toString();
+```
+
 
 
 
