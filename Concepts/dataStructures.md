@@ -1,5 +1,19 @@
 # Data Structures
-<sub>Notes for data structures from Cracking the Coding Interview and other resources.</sub>
+<sub>Notes for data structures from CTCI and other resources.</sub>
+
+## Arrays
+
+A practical and classic data structure where data is stored. Pretty self explanatory, however I will list some built-in functions and different ways to do things.
+
+Luckily in JavaScript, can contain objects of different types.
+
+In JS, you can check if an object is an array by using the function: Array.isArray()
+
+Creating Arrays
+var arr = [];
+var arr = new Array();
+
+
 
 ## Hash Table
 
