@@ -8,7 +8,7 @@ var arr = [];
 var arr = new Array();
 
 //Creating a Array from a String
-String.split(' '); // takes on a delimiter and will split it upon that and returns an Arr
+// String.split(' '); // takes on a delimiter and will split it upon that and returns an Arr
 
 //Accessor Functions
 arr.indexOf(varible); // this function returns the first index where it appears if it doesn't than it returns -1
@@ -41,3 +41,24 @@ arr.splice(startIdx, 0, insertionElements) // 2nd parameter is set to 0 in order
 arr.reverse()
 arr.sort() // sorts alphabetically
 arr.sort(function(a,b){return a-b}) // takes in an ordering function that sorts the array
+
+// Iterator Functions
+
+// Non-Array-Generating Iterator Functions
+arr.forEach() // takes in a a function and applies the function to each element of an array
+arr.every() // returns a true boolean if all true or false if any is false
+// EX:
+    // var arr = [2,4,6]
+    // arr.every(isEven)
+    // function isEven(num){
+    //     return num%2==0;
+    // }
+    //  returns true because they are all true
+arr.some(); // similar to the every function, but returns true if at least one returns true
+arr.reduce(); // applies a function to an accumulator until the array ends, which yields a single value;
+// EX:
+    // var sum = arr.reduce(add);
+    // function add(runningTotal, currentValue){
+    //     return runningTotal + currentValue;
+    // }
+    // returns sum of array
