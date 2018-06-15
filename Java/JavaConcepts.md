@@ -348,6 +348,14 @@ After defining a generic class, there is also a special syntax required to insta
 
 Since generics only work with reference types, you can't put primitive like int or double in <>, instead we use the reference version of primitive type which for int is Integer
 
+```java
+public class DLList<T> {...};
+// T is a placeholder object can use any variable name; This mean our methods now take T instances as paramters too;
+// applying that to our DLList to instantiate we must use this:
+DLList<String> list = new DLList<>("Bone");
+// during this creation of the list, the compiler replaces all instances of T with String
+```
+
 Rules of Thumb:
 * in the java file implementing a dat structure specify your generic type name only once at the very top of the file after the class name
 * in the other .java files, that use your data structure, specify the desired type during declaration and use the empty <> during instantiation
@@ -358,4 +366,145 @@ minor note: you could declare the type inside the <> brackets when instantiating
 ```java
 // the type on the right side is redundant
 DLList<Integer> d =  new DLList<Integer>(5);
+```
+
+
+## Arrays
+
+#### Basics
+Arrays are a special object that consists of a numbered of sequences of memory boxes. To get the nth item of the array, bracket notation is used. An array consists of a fixed integer length, x, and a sequence of x memory boxes. Also arrays do not have methods.
+
+#### 3 methods to Instantiate an array:
+```java
+// this notation creates and array with the specified length and fill in each memory box with a default value of 0
+x = new int[3];
+// creates y and then creates an array of a length of 5 with those specific elements
+y = new int[]{1, 2, 3, 4, 5};
+// this notation is used to declare and create z, its the same as above but it omits the new keyword and can only be done when combined with variable declaration
+int[] z = {6, 7, 8, 9, 10};
+```
+#### Array Access and Modifications
+One way to copy one array to another is to use System.arraycopy. It uses 5 parameters:
+* the array as the source
+* where to start the source array
+* the array to use as destination
+* where to start in the destination array*
+* how many items to copying
+This method is typically faster than a loop but the only issue is that its harder to read. In addition Java arrays only preform bounds checking a runtime meaning that it compiles but crashes at run time.
+
+#### 2D Arrays
+The syntax for the arrays of arrays could be challenging.
+```java
+// to instantiate 2D int array
+int[][] array = new int[4][];
+// this creates an array that holes integer arrays; note that we have to manual create the inner arrays like follows
+array[0] = new int[]{0, 1, 2, 3};
+
+// java can also create multidimensional arrays with the inner arrays create automatically but with default values
+int[][] array = new int[4][4]
+// or multidimensional arrays with the inner arrays already populated with this syntax
+int[][] array = new int[][]{{1}, {1, 2}, {1, 2, 3}};
+```
+
+#### Arrays vs classes
+* Both are used to organize a bunch of memory
+* Both have a fixed number of "boxes"
+* Arrays are accessed via square bracket notation, Classes are accessed via dot notation
+* Elements in the array must be all the same type, elements in a class can be different Types
+* array indices are computed at runtime, we cannot compute class member variable names
+
+#### Java Arrays vs Other Languages
+Java arrays:
+* have no special syntax for slicing like in python
+* cannot be shrunk or expanded like in ruby
+* do not have member methods such as in javascript
+* must container values of the same unlike python
+
+#### ArrayList or AList
+When talking about methods of doubly linked list the get method is usually slower than the getBack method depending on how it is implemented. Iterating through the list is typically just linear, n. So we implement an AList class instead because of instant retrieval.
+
+#### The naive array based List
+acessing the nth element of an array takes constant time, which suggest that array based list would be much more capable for a get method as opposed to a linked list.
+
+```java
+// Basic Array list
+public class AList{
+  private int[] items;
+  private int size;
+
+  public AList(){
+      size = 0;
+      items = new int[100];
+  }
+
+// methods of AList
+  private void resize(int capacity){
+      int[] temp = new int[capacity];
+      System.arraycopy(items, 0, temp, 0, size);
+      items = temp;
+  }
+
+  public void addLast(int i){
+    if(size== items.length){
+      resice(size+1);
+    }
+    items[size] = i;
+    size++;
+  }
+  public void getLast(int i){
+    return items[size-1];
+  }
+  public int get(int i){
+    return items[i];
+  }
+  public int size(){
+    return size;
+  }
+  public int removeLast(){
+    int ans = getLast();
+    size--;
+    return ans;
+  }
+}
+```
+
+The invariants of AList are:
+* the position of the next item to be inserted is always Size, addLast()
+* the number of items in the AList is always size, getLast()
+* the position of the last item in the list is always size - 1, size()
+
+#### Implementation Alist
+These methods are closely related to the invariants
+* addLast is just arr[size]
+* getLast is arr[size-1]
+* removeLast just decrement the size by one so it will write over it if addLast is performed. But it is good practice to null out objects when they are removed
+
+#### Abstraction
+implementation details can be hidden away from users. But as implementers, we can give them any implementation of a list as long as it meets their needs. A user should have no knowledge of how the inner workings are designed.
+
+#### Naive Resizing arrays
+If adding an element to an array with all indices filled will cause an error. The answer to this problem is that we need to build a new array that is big enough to accommodate the new data.
+
+```java
+// This process of creating a new array and copying the items over is called resizing however we're actually just creating a new array
+int[] a = new int[ size + 1 ];
+System.arraycop(items, 0 , a, 0, size);
+a[size] = 11;
+items = a;
+size = ++;
+```
+
+#### Geometric Resizing
+Instead of adding a number of memory boxes by some resizing factor, we instead multiply so that we do not have to copy the array every time it over flows its size.
+
+#### Memory Performance
+What happens if we fill up to the size limit of our AList and remove 99% of the indices. there will be way too much memory unused. To fix this issue, we can downsize the array when it starting to look empty. Just define a usage ratio and halve the size of the array when its less than the ratio.
+
+#### Generic AList
+It possible to modify the Alist so that it can hold any data type. But in Java, generic arrays are not allowed, To do this, need to use the generics syntax with the angle braces and use any arbitrary type parameter for integer wherever appropriate.
+```java
+// We cant use this syntax
+Item[] items = new Item[8];
+// Have to cast even though it yields a compilation warning
+Item[] items = (Item[]) new Object[8];
 ```
