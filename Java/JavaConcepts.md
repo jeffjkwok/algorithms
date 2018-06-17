@@ -508,3 +508,223 @@ Item[] items = new Item[8];
 // Have to cast even though it yields a compilation warning
 Item[] items = (Item[]) new Object[8];
 ```
+
+### Testing and Selection Short
+
+#### A new way
+when you write a program, there might be errors. You gain confidence in your code through user interaction, code analysis and autograder testing. The last being the most important. In the real world, these test are written by the programmers themselves.
+
+#### Ad Hoc testing / Test Dirven Development
+Writing a test for Sort.sort. All that needs to be done is to create an input called sort and check that the output of the method is correct. If the output is not correct, we print out the first mismatch and terminate the test.
+
+TDD is where the programmer write the test before the actual function is written. Since unit test are written before the function is it becomes much easier to isolate errors in your code. Writting unit test require that you have a realtively solid understanding of the task you are undertaking. A drawback to this method is that it could be fairly slow and its possible to forget to test how function interact with each other.
+
+```java
+// the test class might look like this for Sort.sort
+public class TestSort{
+  public static void testSort(){
+    String[] input = {"i", "have", "an", "egg"};
+    String[] expected = {"an", "egg", "have", "i"};
+    Sort.sort(input);
+    for (int i = 0; i < input.length; i++){
+      if(!input[i].equals(expected)){
+        System.out.println("Mismatch in postion " + i + ", expected: " + expected[i] + ", but got: " + input[i] + "." );
+        break;
+      }
+    }
+  }
+  public static void main(String[] args){
+    testSort();
+  }
+}
+```
+
+```Java
+public class Sort{
+  public static void Sort(String[] x){
+
+  }
+}
+```
+
+#### JUnit Tests
+A package that can be used to debug programs in Java. An example from Junit would be assertEquals(expected, actual). this function asserts true if expected and actual have the same value and false otherwise. There are other Junit functions such as assertFalse and assertNotNull.
+
+When writing JUnit test its is good practice to write @Test above the function that is testing; it allows for all test methods to be run non statically
+
+### Selection sort
+Selction sort consist of 3 things:
+* find the smallest items
+* move it to the front
+* selection sort the remaining n-1 items with out touching the front item
+
+<!-- ```java
+public class Sort{
+  public static void sort(String[] x){
+     for(int i = 0; i < x.length; i++){
+
+     }
+  }
+  public static String findSmallest(String[] x){
+
+  }
+}
+``` -->
+
+### Inheritance
+Supposed we wanted to write a class WordUtils that includes functions that includes functions we can run on lists of words, including a method that calculates the longest string in a SLList. How would we make it work for an AList as well. Well all that needs to be done is change the parameter in the method signature.
+
+```java
+public static String longest(SLList<String> list);
+// change it from above to below
+public static String longest(AList<String> list);
+```
+
+This is actually allowed its called method overloading where the method is determined depending on the parameter.
+The problem with method overloading is that it has several downside:
+* its super repetitive and ugly because you have basically two identical blocks of code
+* its more code to maintain meaning that  if you want to make a small change to the longest method such as correcting a bug you need ot change it in the method for all blocks of code
+* if we want to make more list type we would have to copy the method for every new list class.
+
+#### Hypernyms, Hyponyms, and Interface Inheritance
+When explaining hypernyms and hyponyms we look at dogs and the breeds of dogs. Dog is what is called a hypernym of poodle and husky. In reverse, poodle and husky are hyponyms of dog. The same goes for SLList and ALists they are both hyponyms of a more general list.
+
+In Java, in order to express this hierarchy, we need to do two things:
+* first define a type for the general list hypernym -- called GenList
+* then specify that SLList and AList are hyponyms of that type
+
+The new GenList is what Java calls an interface. It is essentially a contract that specifies what a list must be able to do but doesn't provide any implementation for those behaviors
+
+Lets create a hypernym:
+
+```java
+public interface GenList<Item>{
+  public void addFirst(Item x);
+  public void addLast(Item x);
+  public Item getFirst();
+  public Item getLast();
+  public Item removeLast();
+  public Item get(int i);
+  public void insert(Item x, int position);
+  public int size() ;
+}
+```
+
+Next we must specify that Alist and SLList are hyponyms of the GenList class. In Java we define this relationship in the class definition.
+
+We will add to the public class Alist a relationship-defining word: implements.
+
+```java
+public class Alist<Item> {...}
+// changes to
+public class AList<Item> implements List61B<Item>{...}
+```
+
+the implements is essentially a promise. AList is saying that "I promise to have and define all the attributes and behaviors specified in the GenList interface". We can now edit our longest method in WordUtils to take in a GenList because AList and SLList share an "is-a" relationship.
+
+#### Overriding
+When implementing the require functions in the subclass, it's useful to include the @Override tag right on top of the method signatures
+```java
+@Override
+public void addFirst(Item x){
+  insert(x, 0);
+}
+```
+If you dont include the tag, you **are** still overriding the method. However if you do it acts as a safeguard for you as the programmer by alerting the compiler that you tend to override this method. This is important because its like having a proofreader. The compiler will tell you if something goes wrong in the process.
+
+If you want to override the addLast method. What if you make a typo and accidentally write addLsat? if you dont include the @Override tag then you might not catch the mistake and make debugging more difficult. Whereas if you do add the tag, the compiler will stop and prompt a fix to your mistake before the program runs
+
+#### Interface Inheritance
+Interface Inheritance refers to a relationship in which a subclass inherits all the methods/behaviors of the superclass. As in the GenList class we defined the Hyponyms and Hypernyms section, the interface includes all the method signatures, but not implementations. Its up to the subclass to actually provide those implementations.
+
+This inheritance is also multi-generational. This means if there is a long lineage of superclass/subclass relationship. AList not only inherits the methods from List61B but also every other class above it all the way to the highest superclass, which means AList inherits from Collection.
+
+#### GRoE
+Recall the GRoE, this means when you do a = b we copy the bits from b into a, with the requirement that b is the same type as a. Now we cant assign Dog b = 1 or Dog b = new Cat() because 1 and Cat is neither Dog.
+
+Now lets apply it to the longest method that we wrote.
+```java
+public static void main(String[] args){
+  GenList<String> someList = new SSL<String>();
+  someList.addFirst("elk");
+}
+```
+What happens when it runs? Well the possible answer are that it:
+* will not compile
+* will compile but will cause an error on the new line
+* when it runs an SLList is create and its address is stored in the someList variable, but it crashes on someList addFirst() since the List class doesnt implement addFirst
+* when it runs and SLList is created and its address is stored in the someList variable. Then the string "elk" is inserted into the SLList reffered to by addFirst
+
+#### Implementation Inheritance
+Before the GenList had method headers telling what the GenList should do, but now we can write methods in GenList that have their implementation filled out. These methods identify how hypernyms of GenList should behave
+
+To do this you need the default keyword in the method signatures. If we define this method in GenList:
+```java
+default public void print(){
+  for(int i = 0; i < size(); i++) {
+    System.out.print(get(i) + " ");
+  }
+  System.out.println();
+}
+```
+Then everything that implements the GenList can use the method. However there is a small inefficiency in this method.
+
+For SLList the get method needs to jump through the entirety of the list during each call. its better to print while jumping.
+We want SLList to print a different way than the one in the interface. To do this we need to override it. In SLList we implement this method:
+
+```java
+@Override
+public void print(){
+  for(Node p = sentinel.next; p != null; p=p.next){
+    System.out.print(p.item+ "");
+  }
+}
+```
+Now whenever we call print on an SLList, it will call this method instead of the one in GenList
+
+Why does it know which one to call? Good question, Java is able to do this due to something called dynamic method selection
+
+We know that variables in java have a type.
+```java
+GenList<String> lst = new SLList<String>();
+```
+
+In the above declaration and instantiation, lst is of type GenList and is called the static type. However the objects themselves have types aswell. The object that lst points to is type of SLList. Although the object is intrinsically an SLList, it is also a GenList because of the "is-a" relationship we explored earlier. But because the object itself was instantiated using the SLList constructor, we call this its dynamic type.
+
+The name dynamic type is quite semantic in its origin. Should lst be reassigned to point to an object of anothe rtype say AList object, list's dynamic type would now be AList and not Sllist! its dynamic because it changes based on what type of the object its referring to.
+
+When java runs a method that is overridden, it searches for the appropriate method signature in its dynamic type and runs it.
+
+IMPORTANT: THIS DOES NOT WORK FOR OVERLOADED METHODS
+
+Say there are two methods in the same class
+
+```java
+public static void peek(GenList<String> list) {
+    System.out.println(list.getLast());
+}
+public static void peek(SLList<String> list) {
+    System.out.println(list.getFirst());
+}
+// and you run this code
+SLList<String> SP = new SLList<String>();
+GenList<String> LP = SP;
+SP.addLast("elk");
+SP.addLast("are");
+SP.addLast("cool");
+peek(SP);
+peek(LP);
+```
+The first call to peek will use the 2nd definition because its SLList and the second call to peek will use the first peek method because it takes a GenList. When Java checks to see which method to call it checks the static type and calls the method with the parameter of the same type.
+
+#### Interface Inheritance vs Implementation Inheritance
+How to tell the difference?
+* interface inheritance: simply tells what the subclasses should be able to do; ie: all list should be able to print themselves
+* implementation inheritances: tells how subclasses how they should behave; ie: list shoudl print themselves exactly this way, by getting each element in order and then printing it.
+
+When creating these hierarchies remember that the relationship is between a subcalss and a superclass should be a is-a relationship. Which means Cat should only implement Animal Cat is an Animal. You should not be defining them using "has-a" relationship. Cat has-a Claw but should not be implementing Claw.
+
+Implementation inheritance may sound nice and all but there are drawbacks:
+* we are fallible so its possible that we overrode a method but we forgot
+* it may be hard to resolve conflicts in case two interfaces give conflicting default methods
+* it encourages overly complex code
