@@ -5,7 +5,7 @@
 
 A practical and classic data structure where data is stored. Pretty self explanatory, however I will list some built-in functions and different ways to do things.
 
-**Examples of functions for Arrays:** https://github.com/jeffjkwok/algorithms/blob/master/JavaScript/Concepts/arrays.js
+**Examples of functions for Arrays:** https://github.com/jeffjkwok/algorithms/blob/master/Javascript/Concepts/arrays.js
 
 ## Hash Table
 
@@ -20,7 +20,7 @@ This is a data structure that represents a sequence of nodes. In a singly linked
 
 A benefit for linked list is that you can remove things from the front in O(1) time.
 
-**Implementation of Singly Linked Lists:** https://github.com/jeffjkwok/algorithms/blob/master/JavaScript/Concepts/singlyLinkedLists.js
+**Implementation of Singly Linked Lists:** https://github.com/jeffjkwok/algorithms/blob/master/Javascript/Concepts/singlyLinkedLists.js
 
 **Implementation of Doubly Linked Lists:**
 
@@ -38,7 +38,7 @@ There are 4 operations for a stack:
 
 One case where stacks are useful are in certain recursive algorithms. IE: where you need to push temporary data onto a stack as you recurse but remove them as you backtrack. It can also be used to implement a recursive algorithm iteratively.
 
-**Implementation of Stacks:** https://github.com/jeffjkwok/algorithms/blob/master/JavaScript/Concepts/stacks.js
+**Implementation of Stacks:** https://github.com/jeffjkwok/algorithms/blob/master/Javascript/Concepts/stacks.js
 
 #### Implementing a Queue
 
