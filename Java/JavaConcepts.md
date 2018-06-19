@@ -1,4 +1,4 @@
-# Java Concepts
+# Java Concepts and Data Structures
 *Notes and Info Regurgitated from:* https://sp18.datastructur.es/index.html
 
 ## Syntax Features:
@@ -728,3 +728,5 @@ Implementation inheritance may sound nice and all but there are drawbacks:
 * we are fallible so its possible that we overrode a method but we forgot
 * it may be hard to resolve conflicts in case two interfaces give conflicting default methods
 * it encourages overly complex code
+
+<!-- Skipped a few weeks of material weeks 4 - 6  -->
